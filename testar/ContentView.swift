@@ -9,29 +9,36 @@ import SwiftUI
 import RealityKit
 
 struct ContentView: View {
+    init() {
+           let appearance: UITabBarAppearance = UITabBarAppearance()
+           appearance.configureWithDefaultBackground()
+           UITabBar.appearance().scrollEdgeAppearance = appearance
+           UITabBar.appearance().standardAppearance = appearance
+       }
     var body: some View {
-        ARViewControllerContainer()
-            .edgesIgnoringSafeArea(.all) // 全画面表示
-    }
-}
-
-struct ARViewControllerContainer: UIViewControllerRepresentable {
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ARViewControllerContainer>) -> UIViewController {
-        let viewController = ARViewController()
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<ARViewControllerContainer>) {
-    }
-    
-    func makeCoordinator() -> ARViewControllerContainer.Coordinator {
-        return Coordinator()
-    }
-    
-    class Coordinator {
+        TabView{
+            ARViewControllerContainer()
+                .edgesIgnoringSafeArea(.all)
+                .tabItem {
+                    Image(systemName: "doc.text")
+                    Text("AR")//タブバーの①
+                }
+            TimelineView()
+                .tabItem {
+                    Image(systemName: "key")
+                    Text("パスワード")
+                }
+            
+        }
+        .accentColor(.blue)
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
         
+
     }
 }
 
-
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
