@@ -14,13 +14,30 @@ struct TimelineView: View {
             ScrollView {
                 LazyVStack(spacing: 16) {
                     ForEach(viewModel.posts) { post in
-                        PostCardView(post: post)
-                            .padding(.horizontal)
+                        NavigationLink(destination: PostdetailView(post: post)){
+                            VStack{
+                                PostCardView(post: post)
+                                    .padding(.horizontal)
+                            }
+                        }
+                        .listRowSeparatorTint(.black)
                     }
                 }
                 .padding(.vertical)
+                Button(action: {}) {
+                    HStack {
+                        Image(systemName: "message")
+                    }
+                }
+
             }
             .navigationTitle("タイムライン")
         }
+    }
+}
+
+struct TimelineView_Previews: PreviewProvider {
+    static var previews: some View {
+        TimelineView()
     }
 }
