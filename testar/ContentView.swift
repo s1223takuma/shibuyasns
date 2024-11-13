@@ -20,13 +20,13 @@ struct ContentView: View {
             ARViewControllerContainer()
                 .edgesIgnoringSafeArea(.all)
                 .tabItem {
-                    Image(systemName: "doc.text")
+                    Image(systemName: "arkit")
                     Text("AR")//タブバーの①
                 }
             TimelineView()
                 .tabItem {
-                    Image(systemName: "key")
-                    Text("パスワード")
+                    Image(systemName: "captions.bubble")
+                    Text("タイムライン")
                 }
             
         }
