@@ -11,11 +11,14 @@ struct PostCardView: View {
     let post: Post
     @State private var isLiked: Bool
     @State private var isRetweeted: Bool
+    @State private var retweets: Int
+    @State private var likes: Int
     init(post: Post) {
             self.post = post
-            // @Stateの初期値を設定するには_isLikedのように_を付ける
             _isLiked = State(initialValue: post.islikes)
             _isRetweeted = State(initialValue: post.isretweets)
+            _retweets = State(initialValue: post.retweets)
+            _likes = State(initialValue: post.likes)
         }
     
     var body: some View {
@@ -61,10 +64,16 @@ struct PostCardView: View {
                 // リツイート
                 Button(action: {
                     isRetweeted.toggle()
+                    if isRetweeted == true{
+                        retweets += 1
+                    }
+                    else{
+                        retweets -= 1
+                    }
                 }) {
                     HStack {
                         Image(systemName: "arrow.2.squarepath")
-                        Text("\(post.retweets)")
+                        Text("\(retweets)")
                     }
                 }
                 .foregroundColor(isRetweeted ? .green : .gray)
@@ -72,10 +81,16 @@ struct PostCardView: View {
                 // いいね
                 Button(action: {
                     isLiked.toggle()
+                    if isLiked == true{
+                        likes += 1
+                    }
+                    else{
+                        likes -= 1
+                    }
                 }) {
                     HStack {
                         Image(systemName: isLiked ? "heart.fill" : "heart")
-                        Text("\(post.likes)")
+                        Text("\(likes)")
                     }
                 }
                 .foregroundColor(isLiked ? .red : .gray)
@@ -92,5 +107,19 @@ struct PostCardView: View {
         .background(Color(.systemBackground))
         .cornerRadius(12)
         .shadow(radius: 2)
+    }
+}
+struct PostcardView_Previews: PreviewProvider {
+    static var previews: some View {
+        PostdetailView(post:Post(username: "鈴木一郎",
+                                 handle: "ichiro_suzuki",
+                                 avatarName: "avatar3",
+                                 content: "美味しいラーメンを見つけました🍜 また来週も来よう！",
+                                 timeAgo: "5時間前",
+                                 comments: 23,
+                                 retweets: 45,
+                                 likes: 156,
+                                 islikes: true,
+                                 isretweets: false))
     }
 }
