@@ -51,7 +51,7 @@ struct PostdetailView: View {
             }
             
             // アクションボタン
-            HStack(spacing: 32) {
+            HStack(spacing: 55) {
                 // コメント
                 Button(action: {}) {
                     HStack {
