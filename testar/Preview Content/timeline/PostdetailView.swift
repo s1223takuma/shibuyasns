@@ -96,9 +96,7 @@ struct PostdetailView: View {
                 .foregroundColor(isLiked ? .red : .gray)
                 
                 // シェア
-                Button(action: {}) {
-                    Image(systemName: "square.and.arrow.up")
-                }
+                ShareLink("", item: URL(string: "https://developer.apple.com/xcode/swiftui/")!)
                 .foregroundColor(.gray)
             }
             .font(.subheadline)
