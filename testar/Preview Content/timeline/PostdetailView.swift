@@ -9,6 +9,14 @@ import SwiftUI
 
 struct PostdetailView: View {
     let post: Post
+    @State private var isLiked: Bool
+    @State private var isRetweeted: Bool
+    init(post: Post) {
+            self.post = post
+            // @Stateの初期値を設定するには_isLikedのように_を付ける
+            _isLiked = State(initialValue: post.islikes)
+            _isRetweeted = State(initialValue: post.isretweets)
+        }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -52,23 +60,25 @@ struct PostdetailView: View {
                 
                 // リツイート
                 Button(action: {
+                    isRetweeted.toggle()
                 }) {
                     HStack {
                         Image(systemName: "arrow.2.squarepath")
                         Text("\(post.retweets)")
                     }
                 }
-                .foregroundColor(post.isretweets ? .green : .gray)
+                .foregroundColor(isRetweeted ? .green : .gray)
                 
                 // いいね
                 Button(action: {
+                    isLiked.toggle()
                 }) {
                     HStack {
-                        Image(systemName: post.islikes ? "heart.fill" : "heart")
+                        Image(systemName: isLiked ? "heart.fill" : "heart")
                         Text("\(post.likes)")
                     }
                 }
-                .foregroundColor(post.islikes ? .red : .gray)
+                .foregroundColor(isLiked ? .red : .gray)
                 
                 // シェア
                 Button(action: {}) {
@@ -94,6 +104,7 @@ struct PostdetailView_Previews: PreviewProvider {
                                  retweets: 45,
                                  likes: 156,
                                  islikes: true,
-                                 isretweets: true))
+                                 isretweets: false))
     }
 }
+
