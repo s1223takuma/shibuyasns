@@ -17,4 +17,6 @@ struct Post: Identifiable {
     var comments: Int
     var retweets: Int
     var likes: Int
+    var islikes: Bool
+    var isretweets: Bool
 }

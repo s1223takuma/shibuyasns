@@ -9,8 +9,6 @@ import SwiftUI
 
 struct PostCardView: View {
     let post: Post
-    @State private var isLiked = false
-    @State private var isRetweeted = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -54,25 +52,23 @@ struct PostCardView: View {
                 
                 // リツイート
                 Button(action: {
-                    isRetweeted.toggle()
                 }) {
                     HStack {
                         Image(systemName: "arrow.2.squarepath")
                         Text("\(post.retweets)")
                     }
                 }
-                .foregroundColor(isRetweeted ? .green : .gray)
+                .foregroundColor(post.isretweets ? .green : .gray)
                 
                 // いいね
                 Button(action: {
-                    isLiked.toggle()
                 }) {
                     HStack {
-                        Image(systemName: isLiked ? "heart.fill" : "heart")
+                        Image(systemName: post.islikes ? "heart.fill" : "heart")
                         Text("\(post.likes)")
                     }
                 }
-                .foregroundColor(isLiked ? .red : .gray)
+                .foregroundColor(post.islikes ? .red : .gray)
                 
                 // シェア
                 Button(action: {}) {

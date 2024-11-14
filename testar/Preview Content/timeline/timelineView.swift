@@ -24,11 +24,6 @@ struct TimelineView: View {
                     }
                 }
                 .padding(.vertical)
-                Button(action: {}) {
-                    HStack {
-                        Image(systemName: "message")
-                    }
-                }
 
             }
             .navigationTitle("タイムライン")
