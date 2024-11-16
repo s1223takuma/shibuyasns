@@ -12,6 +12,7 @@ erDiagram
         string email_address "メールアドレス"
         string password "パスワード"
         int total_points "獲得ポイント"
+        blob icon_image "アイコン画像"
     }
 
     Events {
