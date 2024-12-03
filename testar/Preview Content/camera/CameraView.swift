@@ -25,3 +25,8 @@ struct CameracontentView: View {
         }
     }
 }
+struct CameracontentView_Previews: PreviewProvider {
+    static var previews: some View {
+        CameracontentView()
+    }
+}
