@@ -28,6 +28,11 @@ struct ContentView: View {
                     Image(systemName: "captions.bubble")
                     Text("タイムライン")
                 }
+            CameracontentView()
+                .tabItem{
+                    Image(systemName: "camera")
+                    Text("カメラ")
+                }
             
         }
         .accentColor(.blue)
