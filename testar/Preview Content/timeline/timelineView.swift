@@ -37,13 +37,13 @@ struct TimelineView: View {
                         }
                         
                     }
-                    .listRowSeparator(.hidden) // セパレータを非表示
-                    .listRowInsets(EdgeInsets()) // デフォルトのパディングを削除
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets())
                 }
             }
-            .listStyle(PlainListStyle()) // システムのリストスタイルを無効化
-            .background(Color(.systemBackground)) // 背景色をシステムに合わせる
-            .navigationBarTitleDisplayMode(.inline) // ナビゲーションバータイトルをインラインに
+            .listStyle(PlainListStyle())
+            .background(Color(.systemBackground))
+            .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("タイムライン")
             .navigationBarItems(
                 leading: Image("myavatar")
@@ -62,13 +62,10 @@ struct TimelineView_Previews: PreviewProvider {
 }
 
 func sendNotificationRequest(){
-    // 通知オブジェクト作成
     let content = UNMutableNotificationContent()
     content.title = "アプリから離れたのを検知しました"
     content.body = "アプリに戻ってください"
-    // 通知を発行するトリガー(条件)を設定
     let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
     let request = UNNotificationRequest(identifier: "通知No.1", content: content, trigger: trigger)
-    // 通知を登録
     UNUserNotificationCenter.current().add(request)
 }

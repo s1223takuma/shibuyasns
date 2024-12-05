@@ -16,7 +16,7 @@ class PostViewModel: ObservableObject {
              timeAgo: "2時間前",
              comments: 12,
              retweets: 34,
-             likes: 1000,
+             likes: 100000,
              islikes: true,
              isretweets: true
             ),

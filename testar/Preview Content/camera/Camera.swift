@@ -1,4 +1,5 @@
 import SwiftUI
+import Photos
 
 public struct CameraView: UIViewControllerRepresentable {
     @Binding private var image: UIImage?

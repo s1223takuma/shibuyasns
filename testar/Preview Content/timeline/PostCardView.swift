@@ -57,13 +57,13 @@ struct PostCardView: View {
                 actionButton(systemName: "arrow.2.squarepath", count: retweets, color: isRetweeted ? .green : .gray) {
                     isRetweeted.toggle()
                     retweets += isRetweeted ? 1 : -1
-                }
+                }.fixedSize(horizontal: true, vertical: false)
                 
                 // いいね
                 actionButton(systemName: isLiked ? "heart.fill" : "heart", count: likes, color: isLiked ? .red : .gray) {
                     isLiked.toggle()
                     likes += isLiked ? 1 : -1
-                }
+                }.fixedSize(horizontal: true, vertical: false)
                 
                 // シェア
                 Button(action: {}) {
