@@ -9,101 +9,87 @@ import SwiftUI
 
 struct PostCardView: View {
     let post: Post
-    @State private var isLiked: Bool
-    @State private var isRetweeted: Bool
-    @State private var retweets: Int
-    @State private var likes: Int
-    init(post: Post) {
-            self.post = post
-            _isLiked = State(initialValue: post.islikes)
-            _isRetweeted = State(initialValue: post.isretweets)
-            _retweets = State(initialValue: post.retweets)
-            _likes = State(initialValue: post.likes)
-        }
+    @Binding var isLiked: Bool
+    @Binding var isRetweeted: Bool
+    @Binding var retweets: Int
+    @Binding var likes: Int
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 10) {
             // ユーザー情報
-            HStack(spacing: 12) {
+            HStack(alignment: .top, spacing: 10) {
                 Image(post.avatarName)
                     .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 48, height: 48)
                     .clipShape(Circle())
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    HStack {
+                    HStack(spacing: 4) {
                         Text(post.username)
                             .font(.headline)
+                            .lineLimit(1)
                         
                         Text("@\(post.handle)")
                             .foregroundColor(.gray)
+                            .lineLimit(1)
                         
-                        Text("・")
-                            .foregroundColor(.gray)
+                        Spacer()
                         
                         Text(post.timeAgo)
                             .foregroundColor(.gray)
+                            .font(.caption)
                     }
                     
                     Text(post.content)
                         .font(.body)
+                        .lineLimit(3)
                 }
             }
+            .padding(.horizontal)
             
             // アクションボタン
-            HStack(spacing: 55) {
+            HStack(spacing: 50) {
                 // コメント
-                Button(action: {}) {
-                    HStack {
-                        Image(systemName: "message")
-                        Text("\(post.comments)")
-                    }
-                }
-                .foregroundColor(.gray)
+                actionButton(systemName: "message", count: post.comments, color: .gray)
                 
                 // リツイート
-                Button(action: {
+                actionButton(systemName: "arrow.2.squarepath", count: retweets, color: isRetweeted ? .green : .gray) {
                     isRetweeted.toggle()
-                    if isRetweeted == true{
-                        retweets += 1
-                    }
-                    else{
-                        retweets -= 1
-                    }
-                }) {
-                    HStack {
-                        Image(systemName: "arrow.2.squarepath")
-                        Text("\(retweets)")
-                    }
+                    retweets += isRetweeted ? 1 : -1
                 }
-                .foregroundColor(isRetweeted ? .green : .gray)
                 
                 // いいね
-                Button(action: {
+                actionButton(systemName: isLiked ? "heart.fill" : "heart", count: likes, color: isLiked ? .red : .gray) {
                     isLiked.toggle()
-                    if isLiked == true{
-                        likes += 1
-                    }
-                    else{
-                        likes -= 1
-                    }
-                }) {
-                    HStack {
-                        Image(systemName: isLiked ? "heart.fill" : "heart")
-                        Text("\(likes)")
-                    }
+                    likes += isLiked ? 1 : -1
                 }
-                .foregroundColor(isLiked ? .red : .gray)
                 
                 // シェア
-                ShareLink("", item: URL(string: "https://developer.apple.com/xcode/swiftui/")!) .foregroundColor(.gray)
+                Button(action: {}) {
+                    Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(.gray)
+                }
             }
+            .padding(.horizontal)
             .font(.subheadline)
+            
         }
-        .padding()
+        
+        .padding(.vertical, 10)
         .background(Color(.systemBackground))
-        .cornerRadius(12)
-        .shadow(radius: 2)
+        
+    }
+    
+    @ViewBuilder
+    func actionButton(systemName: String, count: Int, color: Color, action: (() -> Void)? = nil) -> some View {
+        Button(action: action ?? {}) {
+            HStack(spacing: 4) {
+                Image(systemName: systemName)
+                Text("\(count)")
+            }
+        }
+        .foregroundColor(color)
     }
 }
 struct PostcardView_Previews: PreviewProvider {
