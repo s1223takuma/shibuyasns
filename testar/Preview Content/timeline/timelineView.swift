@@ -23,18 +23,23 @@ struct TimelineView: View {
         NavigationView {
             List {
                 ForEach(viewModel.posts) { post in
-                    NavigationLink(destination: PostdetailView(post: post)) {
-                        VStack{
-                            PostCardView(
-                                post: post,
-                                isLiked: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].islikes,
-                                isRetweeted: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].isretweets,
-                                retweets: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].retweets,
-                                likes: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].likes
-                            )
-                            Divider()
+                        ZStack{
                             
-                        }
+                            NavigationLink(destination: PostdetailView(post: post)) {EmptyView()}
+                                .padding(10)
+                                .opacity(0)
+                            VStack{
+                                PostCardView(
+                                    post: post,
+                                    isLiked: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].islikes,
+                                    isRetweeted: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].isretweets,
+                                    retweets: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].retweets,
+                                    likes: $viewModel.posts[viewModel.posts.firstIndex(where: { $0.id == post.id })!].likes
+                                )
+                                Divider()
+                                    .padding(5)
+                                
+                            }
                         
                     }
                     .listRowSeparator(.hidden)
