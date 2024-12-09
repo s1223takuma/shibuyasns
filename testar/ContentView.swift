@@ -6,39 +6,27 @@
 //
 
 import SwiftUI
-import RealityKit
+
 
 struct ContentView: View {
-    init() {
-           let appearance: UITabBarAppearance = UITabBarAppearance()
-           appearance.configureWithDefaultBackground()
-           UITabBar.appearance().scrollEdgeAppearance = appearance
-           UITabBar.appearance().standardAppearance = appearance
-       }
+    @State var isShowLogin = false
+    var authenticationManager = AuthenticationManager()
     var body: some View {
-        TabView{
-            ARViewControllerContainer()
-                .edgesIgnoringSafeArea(.all)
-                .tabItem {
-                    Image(systemName: "arkit")
-                    Text("AR")//タブバーの①
+        VStack {
+            if authenticationManager.isSignIn == false {
+                //ログインしていないとき
+                Button("ログイン") {
+                    isShowLogin .toggle()
                 }
-            TimelineView()
-                .tabItem {
-                    Image(systemName: "captions.bubble")
-                    Text("タイムライン")
+            }else{
+                //ログインしているとき
+                MainView()
+            }
+            Spacer()
+                .sheet(isPresented: $isShowLogin) {
+                    LoginView()
                 }
-            CameracontentView()
-                .tabItem{
-                    Image(systemName: "camera")
-                    Text("カメラ")
-                }
-            
         }
-        .accentColor(.blue)
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        
-
     }
 }
 
