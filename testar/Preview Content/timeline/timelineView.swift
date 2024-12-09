@@ -7,6 +7,7 @@
 
 import SwiftUI
 struct TimelineView: View {
+    var authenticationManager = AuthenticationManager()
     @StateObject private var viewModel = PostViewModel()
     init(){
             let center = UNUserNotificationCenter.current()
@@ -45,6 +46,10 @@ struct TimelineView: View {
                     .listRowSeparator(.hidden)
                     .listRowInsets(EdgeInsets())
                 }
+                
+                Button("ログアウト") {
+                            authenticationManager.signOut()
+                        }
             }
             .listStyle(PlainListStyle())
             .background(Color(.systemBackground))
