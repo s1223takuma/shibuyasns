@@ -29,22 +29,9 @@
 		A1FFD8252CC0A2B10062FCEE /* testarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		A184BDD12D0618C6009E4274 /* Exceptions for "testar" folder in "testar" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = A1FFD80A2CC0A2B00062FCEE /* testar */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A1FFD80D2CC0A2B00062FCEE /* testar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				A184BDD12D0618C6009E4274 /* Exceptions for "testar" folder in "testar" target */,
-			);
 			path = testar;
 			sourceTree = "<group>";
 		};
@@ -208,8 +195,6 @@
 			);
 			mainGroup = A1FFD8022CC0A2B00062FCEE;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A1FFD80C2CC0A2B00062FCEE /* Products */;
 			projectDirPath = "";
@@ -414,7 +399,6 @@
 				DEVELOPMENT_TEAM = A2HUR5KZHJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = testar/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -446,7 +430,6 @@
 				DEVELOPMENT_TEAM = A2HUR5KZHJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = testar/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
