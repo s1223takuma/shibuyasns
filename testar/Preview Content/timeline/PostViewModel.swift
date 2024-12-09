@@ -12,7 +12,7 @@ class PostViewModel: ObservableObject {
         Post(username: "田中太郎",
              handle: "taro_tanaka",
              avatarName: "avatar4",
-             content: "今日は素晴らしい天気ですね！公園でピクニックするのにぴったりです 🌸こんにちは私は3行目を表示するために作られています。どうでしょうか",
+             content: "今日は素晴らしい天気ですね！公園でピクニックするのにぴったりです 🌸",
              timeAgo: "2時間前",
              comments: 12,
              retweets: 34,
