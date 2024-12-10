@@ -15,8 +15,12 @@ struct ContentView: View {
         VStack {
             if authenticationManager.isSignIn == false {
                 //ログインしていないとき
-                Button("ログイン") {
-                    isShowLogin .toggle()
+                VStack{
+                    Spacer()
+                    Button("ログイン") {
+                        isShowLogin .toggle()
+                    }
+                    Spacer()
                 }
             }else{
                 //ログインしているとき
