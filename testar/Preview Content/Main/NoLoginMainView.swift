@@ -1,14 +1,14 @@
 //
-//  MainView.swift
+//  NoLoginMainView.swift
 //  testar
 //
-//  Created by 関琢磨 on 2024/12/09.
+//  Created by 関琢磨 on 2024/12/10.
 //
 
 import SwiftUI
 import RealityKit
 
-struct MainView: View {
+struct NoLoginMainView: View {
     init() {
            let appearance: UITabBarAppearance = UITabBarAppearance()
            appearance.configureWithDefaultBackground()
@@ -42,8 +42,8 @@ struct MainView: View {
     }
 }
 
-struct MainView_Previews: PreviewProvider {
+struct NoLoginMainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        NoLoginMainView()
     }
 }

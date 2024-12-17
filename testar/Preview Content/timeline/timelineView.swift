@@ -9,17 +9,7 @@ import SwiftUI
 struct TimelineView: View {
     var authenticationManager = AuthenticationManager()
     @StateObject private var viewModel = PostViewModel()
-    init(){
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: .alert) { granted, error in
-                if granted {
-                    print("許可されました！")
-                }else{
-                    print("拒否されました...")
-                }
-            }
-        sendNotificationRequest()
-        }
+
     var body: some View {
         NavigationView {
             List {
@@ -71,11 +61,3 @@ struct TimelineView_Previews: PreviewProvider {
     }
 }
 
-func sendNotificationRequest(){
-    let content = UNMutableNotificationContent()
-    content.title = "アプリから離れたのを検知しました"
-    content.body = "アプリに戻ってください"
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-    let request = UNNotificationRequest(identifier: "通知No.1", content: content, trigger: trigger)
-    UNUserNotificationCenter.current().add(request)
-}
